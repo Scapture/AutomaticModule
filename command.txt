@@ -1,0 +1,11 @@
+Matt Broker 시작
+/opt/homebrew/opt/mosquitto/sbin/mosquitto -c /opt/homebrew/etc/mosquitto/mosquitto.conf
+
+녹화 시작 Subscribe
+/opt/homebrew/Cellar/mosquitto/2.0.17/bin/mosquitto_sub -h localhost -p 1883 -t record
+
+녹화 시작 Publish
+/opt/homebrew/Cellar/mosquitto/2.0.17/bin/mosquitto_pub -h localhost -p 1883 -t record -m start
+
+녹화 종료 Publish
+/opt/homebrew/Cellar/mosquitto/2.0.17/bin/mosquitto_pub -h localhost -p 1883 -t record -m end

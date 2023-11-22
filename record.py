@@ -13,16 +13,17 @@ def start_recording():
     global recording
     recording = True
     
+# True가 노트북 기준 오른쪽
 def run(status: bool):
     if recording:
         if status:
-            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.57:554/stream1/out.h265")
-            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.58:554/stream1/out.h265")
-            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.59:554/stream1/out.h265")
+            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.68:554/stream1/out.h265")
+            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.69:554/stream1/out.h265")
+            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.72:554/stream1/out.h265")
         else:
-            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.63:554/stream1/out.h265")
-            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.62:554/stream1/out.h265")
-            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.61:554/stream1/out.h265")
+            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.66:554/stream1/out.h265")
+            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.67:554/stream1/out.h265")
+            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.71:554/stream1/out.h265")
     
         if(capGoalLine.isOpened()):
             print("GoalLine OK")

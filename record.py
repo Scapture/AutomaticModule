@@ -1,10 +1,10 @@
 import cv2
 
 # 녹화 시작 및 종료를 위한 상태 변환
-recording = False
+recording = True
 
 # mqtt_sub.py에서 녹화 종료를 위한 코드
-def stop_recording():
+def stop_recording(pid):
     global recording
     recording = False
 
@@ -17,13 +17,13 @@ def start_recording():
 def run(status: bool):
     if recording:
         if status:
-            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.68:554/stream1/out.h265")
-            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.69:554/stream1/out.h265")
-            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.72:554/stream1/out.h265")
+            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.11:554/stream1/out.h265")
+            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.12:554/stream1/out.h265")
+            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.13:554/stream1/out.h265")
         else:
-            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.66:554/stream1/out.h265")
-            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.67:554/stream1/out.h265")
-            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.71:554/stream1/out.h265")
+            capGoalLine = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.14:554/stream1/out.h265")
+            capLeft = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.15:554/stream1/out.h265")
+            capRight = cv2.VideoCapture("rtsp://admin:asdf1346@@192.168.0.16:554/stream1/out.h265")
     
         if(capGoalLine.isOpened()):
             print("GoalLine OK")

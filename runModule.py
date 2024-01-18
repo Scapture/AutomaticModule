@@ -1,10 +1,12 @@
 import record
 import paho.mqtt.client as mqtt
 import threading
+import detection
 
-def run(status: bool):
-    mqtt_broker = "192.168.0.42"
-    topic = "record"
+def run(status: bool, pid):
+    mqtt_broker = "192.168.0.15"
+    topic = pid
+    isRecord = True
 
     def on_connect(client, userdata, flags, rc):
         print("Connected with result code "+str(rc))
@@ -15,12 +17,14 @@ def run(status: bool):
         print("arrived: ", message)
 
         if message == "start":
-            record.start_recording()
+            # record.start_recording()
             print("Start recording")
 
         elif message == "end":
             record.stop_recording()
+            detection.run()
             print("Stop recording")
+
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
@@ -33,7 +37,6 @@ def run(status: bool):
     mqtt_thread.daemon = True
     mqtt_thread.start()
 
-
+    
     # 메인 스레드에서 녹화 루프를 실행합니다.
-    while True:
-        record.run(status)
+    record.run()
